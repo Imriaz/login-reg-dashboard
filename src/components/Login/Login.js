@@ -1,17 +1,20 @@
 import { Container, Typography, TextField, Button, Checkbox } from '@mui/material';
 import React from 'react';
+import './Login.css'
 import { Grid } from '@mui/material';
 import login_img from '../../images/login_img.png';
+import LoginAppBar from '../Shared/Navigation/LoginAppBar';
 
 const Login = () => {
     return (
         <>
+            <LoginAppBar />
             <Container>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={6}>
                         <Typography sx={{ textAlign: 'left', fontWeight: 'bold' }} variant="body1" gutterBottom>Hi, Welcome Back</Typography>
                         <br />
-                        <img style={{ width: '75%', margin: '0px' }} src={login_img} alt="" />
+                        <img className='img-mobile' style={{ width: '75%', margin: '0px' }} src={login_img} alt="" />
                     </Grid>
 
                     <Grid item sx={{ mt: 8 }} xs={12} md={6}>

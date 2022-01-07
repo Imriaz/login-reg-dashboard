@@ -1,17 +1,20 @@
 import { Container, Typography, TextField, Button } from '@mui/material';
 import React from 'react';
 import { Grid } from '@mui/material';
+import './Registration.css'
+import RegistrationAppBar from '../Shared/Navigation/RegistrationAppBar';
 import registration_img from '../../images/registration_img.png';
 
 const Registration = () => {
     return (
         <>
+            <RegistrationAppBar />
             <Container>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={6}>
                         <Typography sx={{ textAlign: 'left', fontWeight: 'bold' }} variant="body1" gutterBottom>Sign Up</Typography>
                         <br />
-                        <img style={{ width: '75%', margin: '0px' }} src={registration_img} alt="" />
+                        <img className='img-reg-mobile' style={{ width: '75%', margin: '0px' }} src={registration_img} alt="" />
                     </Grid>
 
                     <Grid item sx={{ mt: 8 }} xs={12} md={6}>

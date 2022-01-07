@@ -13,14 +13,40 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
+import { Button, Container, Grid } from '@mui/material';
+import Chart from "react-apexcharts";
+
 import logo from '../../images/logo.png';
+import spider from '../../images/spider.png'
+import donut from '../../images/donut.png'
+import DashboardAppBar from '../Shared/Navigation/LoginAppBar';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
+
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
+
+    // Graph value
+    const options = {
+        chart: {
+            id: "basic-bar"
+        },
+        xaxis: {
+            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+        }
+    };
+    const series = [
+        {
+            name: "series-1",
+            data: [30, 40, 45, 50, 49, 60, 70, 91]
+        }
+    ];
+
+    const optionsD = {};
+    const seriesD = [44, 55, 41, 17, 15];
+    const labelsD = ['A', 'B', 'C', 'D', 'E'];
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -89,7 +115,9 @@ function Dashboard(props) {
     const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
+
         <Box sx={{ display: 'flex' }}>
+
             <CssBaseline />
             <AppBar
                 position="fixed"
@@ -98,6 +126,7 @@ function Dashboard(props) {
                     ml: { sm: `${drawerWidth}px` },
                 }}
             >
+
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -113,6 +142,7 @@ function Dashboard(props) {
                     </Typography> */}
                 </Toolbar>
             </AppBar>
+            {/* <DashboardAppBar /> */}
             <Box
                 component="nav"
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -151,19 +181,57 @@ function Dashboard(props) {
             >
                 <Toolbar />
 
-                <Typography paragraph>
-                    Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-                    eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-                    neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-                    tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-                    sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-                    tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-                    gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-                    et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-                    tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-                    eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-                    posuere sollicitudin aliquam ultrices sagittis orci a.
-                </Typography>
+                {/* staaaaaaaat */}
+                <Container>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} md={6}>
+                            <div sx={{ border: '5px solid red', borderRadius: '10px' }}>
+                                <Button sx={{ width: '25%', m: 1, borderRadius: 2, backgroundColor: '#827717' }} type="p" variant="contained">Subject  <i class="fas fa-chevron-down"></i></Button>
+                                <br />
+                                <Typography sx={{ textAlign: 'left' }} variant="p" gutterBottom>Spider</Typography>
+                                <Chart
+                                    options={options}
+                                    series={series}
+                                    type="radar"
+                                    width="300"
+                                />
+                            </div>
+                        </Grid>
+
+                        <Grid item sx={{ mt: 8 }} xs={12} md={6}>
+                            <Typography sx={{ textAlign: 'left' }} variant="p" gutterBottom>Donut</Typography>
+                            <Chart
+                                options={optionsD}
+                                series={seriesD}
+                                type="donut"
+                                width="300"
+                            />
+                        </Grid>
+
+                        <Grid item sx={{ mt: 8 }} xs={12} md={6}>
+                            <Typography sx={{ textAlign: 'left' }} variant="p">Column</Typography>
+                            <div>
+                                <Chart
+                                    options={options}
+                                    series={series}
+                                    type="bar"
+                                    width="300"
+                                />
+                            </div>
+                        </Grid>
+
+                        <Grid item sx={{ mt: 8 }} xs={12} md={6}>
+                            <Typography sx={{ textAlign: 'left' }} variant="p">Line</Typography>
+                            <Chart
+                                options={options}
+                                series={series}
+                                type="line"
+                                width="300"
+                            />
+                        </Grid>
+                    </Grid>
+                </Container>
+                {/* staaaaaaaat */}
             </Box>
         </Box>
     );

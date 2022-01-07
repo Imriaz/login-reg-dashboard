@@ -7,15 +7,15 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+import logo from '../../../images/logo.png';
+import { Link, NavLink } from 'react-router-dom';
 
-const Navigation = () => {
 
+const LoginAppBar = () => {
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{ backgroundColor: 'white' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
@@ -24,7 +24,7 @@ const Navigation = () => {
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
-                        <img src="../../../images/logo.png" alt="" />
+                        <img src={logo} alt="Logo" />
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -68,9 +68,7 @@ const Navigation = () => {
 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
-                            <IconButton sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
+                            <Typography sx={{ textAlign: 'left', color: 'black' }} variant="body1" gutterBottom>Didn't have an account? <NavLink to="/registration">Get Started</NavLink></Typography>
                         </Tooltip>
                         <Menu
                             sx={{ mt: '45px' }}
@@ -85,7 +83,6 @@ const Navigation = () => {
                                 horizontal: 'right',
                             }}
                         >
-
                         </Menu>
                     </Box>
                 </Toolbar>
@@ -93,4 +90,4 @@ const Navigation = () => {
         </AppBar>
     );
 };
-export default Navigation;
+export default LoginAppBar;
